@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Diploma {{ object.diploma_number }}{% endblock %}
+{% block content %}
+<h2>{{ object.full_name }}</h2>
+<p><strong>Number:</strong> {{ object.diploma_number }}</p>
+<p><strong>Issue Date:</strong> {{ object.issue_date }}</p>
+<p><a href="{{ object.diploma_file.url }}" target="_blank">Download File</a></p>
+{% if user.is_staff %}
+<a class="btn btn-primary" href="{% url 'diploma_edit' object.pk %}">Edit</a>
+<a class="btn btn-danger" href="{% url 'diploma_delete' object.pk %}">Delete</a>
+{% endif %}
+{% endblock %}

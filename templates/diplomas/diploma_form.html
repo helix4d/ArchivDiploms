@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}{{ view.object|default_if_none:'Add Diploma' }}{% endblock %}
+{% block content %}
+<h2>{% if view.object %}Edit{% else %}Add{% endif %} Diploma</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock %}
